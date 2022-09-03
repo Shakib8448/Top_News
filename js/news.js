@@ -1,5 +1,5 @@
 const loadNews = async() =>{
-    const url = `https://openapi.programming-hero.com/api/news/category/01`
+    const url = `https://openapi.programming-hero.com/api/news/category/08`
     const res = await fetch(url);
     const data = await res.json();
     displayNews(data.data);
@@ -23,9 +23,10 @@ const displayNews = news =>{
                     <div>
                         <div class="d-flex">
                             <img src="${news.author.img}" class="rounded-circle " style="max-height: 50px; max-width: 50px;" alt="Cinque Terre">
-                            <p class="p-2">${news.author.name}</p>
+                            <p class="p-2">${news.author.name? news.author.name: "No Name" }</p>
                             <div class="d-flex p-3">
-                            <i class="fa-solid fa-eye"></i>
+                            <i class="fa-solid fa-eye p-1"></i>
+                            <p>${news.total_view}</p>
                             </div>
                         </div>
                        
@@ -35,5 +36,4 @@ const displayNews = news =>{
         })
         
 }
-
 loadNews();
