@@ -1,5 +1,5 @@
-const loadNews = async() =>{
-    const url = `https://openapi.programming-hero.com/api/news/category/08`
+const loadNews = async(id) =>{
+    const url = `https://openapi.programming-hero.com/api/news/category/${id}`
     const res = await fetch(url);
     const data = await res.json();
     displayNews(data.data);
@@ -7,6 +7,7 @@ const loadNews = async() =>{
 
 const displayNews = news =>{
     const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML=``
     news.forEach(news =>{
         const newsDiv =document.createElement('div');
         newsDiv.classList.add('row' ,'g-2','mt-3')
@@ -36,4 +37,7 @@ const displayNews = news =>{
         })
         
 }
-loadNews();
+
+const searchFood = () =>{
+
+}
