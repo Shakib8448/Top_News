@@ -62,3 +62,4 @@ const displayNews = news =>{
         
 }
 
+loadNews('08');
