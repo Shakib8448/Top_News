@@ -56,6 +56,9 @@ const displayNews = news =>{
                 </div>`    
                 newsContainer.appendChild(newsDiv);
         })
+        const itemNum = document.getElementById('item-num')
+        const n = news.length;
+        itemNum.innerText = `${n} data found`
         
 }
 
