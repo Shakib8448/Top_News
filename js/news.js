@@ -1,9 +1,30 @@
+const loadCategoryNews = async() =>{
+    const url = `https://openapi.programming-hero.com/api/news/categories`
+    const res = await fetch(url);
+    const data = await res.json();
+    displayCategoryNews(data.data.news_category);
+}
+
 const loadNews = async(id) =>{
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
     const res = await fetch(url);
     const data = await res.json();
     displayNews(data.data);
 }
+
+const displayCategoryNews = news =>{
+    const newsContainer = document.getElementById('news-category');
+    news.forEach(news =>{
+        const newsButton =document.createElement('div');
+        newsButton.classList.add("d-flex");
+        newsButton.innerHTML = `
+            <button onclick="loadNews('${news.category_id}')" type="button" class="row-2
+            justify-content-evenly mx-3 btn btn-outline-secondary mt-4">${news.category_name}</button>`    
+        newsContainer.appendChild(newsButton);
+        })
+    }
+
+    loadCategoryNews();
 
 const displayNews = news =>{
     const newsContainer = document.getElementById('news-container');
@@ -38,6 +59,3 @@ const displayNews = news =>{
         
 }
 
-const searchFood = () =>{
-
-}
